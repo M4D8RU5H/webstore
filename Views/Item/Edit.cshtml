@@ -1,0 +1,133 @@
+﻿@model WebStore.Models.Item
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <form asp-controller="Item" asp-action="Update" method="post" enctype="multipart/form-data">
+                <input asp-for="Id" value="@Model.Id" type="hidden" />
+
+                <div class="row item_section">
+                    <h4><label asp-for="ImageFiles"></label>*</h4>
+                    <div id="images" class="col-md-12">
+
+                        <div class="row">                            
+                                @if (Model.Images.Any())
+                                {
+                                     <div id="images_preview" style='background-image: url("../@Model.Images.FirstOrDefault().URL"); padding-top: 55.5%; display: block;'>
+                                        <div id="set_main_img" style="display: none">USTAW ZDJĘCIE JAKO GŁÓWNE</div>
+                                        <div id="add_first_img" style="display: none">
+                                            <label for="add_first_img_btn">WYBIERZ ZDJĘCIE Z DYSKU</label>
+                                            <input id="add_first_img_btn" asp-for="ImageFiles" accept="image/png, image/jpeg" class="upload_img">
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div id="images_preview">
+                                        <div id="set_main_img">USTAW ZDJĘCIE JAKO GŁÓWNE</div>
+                                        <div id="add_first_img">
+                                            <label for="add_first_img_btn">WYBIERZ ZDJĘCIE Z DYSKU</label>
+                                            <input id="add_first_img_btn" asp-for="ImageFiles" accept="image/png, image/jpeg" class="upload_img">
+                                        </div>
+                                    </div>
+                                }
+                            <span asp-validation-for="ImageFiles" class="text-danger"></span>
+                        </div>
+
+                        <div id="img_panel" class="row">                            
+                            @if (Model.Images.Any())
+                            {
+                                int itemId = 1;
+                                foreach (ItemImage image in Model.Images)
+                                {
+                                    <div class="img_holder" id="img@(itemId++)">
+                                        <div class="img_preview" style='background-image: url("../@image.URL"); background-color: rgb(255, 255, 255); cursor: pointer; border: 3px solid @(itemId == 2 ? "rgb(254, 152, 15)" : "rgb(255, 235, 209)")'>
+                                            <label class="fa fa-plus img_add" style="display: none;">
+                                                <input type="file" name="ItemImages" accept="image/png, image/jpeg" class="upload_img">
+                                            </label>
+                                            @if (itemId == 2) { <div id="main_img">GŁÓWNE</div> }
+                                        </div><div class="img_delete"><span>USUŃ</span></div>
+                                    </div>
+                                }
+                                @if (itemId < 8)
+                                {
+                                    <div class="img_holder">
+                                        <div class="img_preview">
+                                            <label class="fa fa-plus img_add">
+                                                <input asp-for="ImageFiles" accept="image/png, image/jpeg" class="upload_img">
+                                            </label>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row item_section">
+                            <h4><label asp-for="Name"></label>*</h4>
+                            <input asp-for="Name" autocomplete="off" placeholder="Podaj nazwę przedmiotu" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="row item_section">
+                            <h4><label asp-for="Description"></label></h4>
+                            <textarea asp-for="Description" autocomplete="off" placeholder="Napisz o przedmiocie coś więcej" rows="6" style="resize: vertical" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="row item_section">
+                            <h4><label asp-for="Category"></label>*</h4>
+                            <button type="button" id="show_categories_btn" class="btn btn-outline-primary">Przeglądaj wszystkie kategorie...</button>                            
+
+                            <div id="category_browser">                                
+                                <ul id="category_list">                                    
+                                </ul>
+                            </div>
+
+                            <input asp-for="Category" value="@Model.Category.Id" type="hidden"/>
+                            <span asp-validation-for="Category" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="row item_section">
+                            <div style="width: 49%; float: left; margin-right: 2%">
+                                <h4><label asp-for="Price"></label>*</h4>
+                                <input asp-for="Price" autocomplete="off" placeholder="0,00" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                            <div style="width: 49%; float: left;">
+                                <h4><label asp-for="StockQuantity"></label>*</h4>
+                                <input asp-for="StockQuantity" autocomplete="off" placeholder="0" class="form-control" />
+                                <span asp-validation-for="StockQuantity" class="text-danger"></span>
+                            </div>
+                            <div style="clear: both"></div>
+                        </div>
+
+                        <div class="row item_section">
+                            <h4><label asp-for="IsVisible"></label></h4>
+                            <input asp-for="IsVisible" style="margin-right: 10px; margin: 0, accent-color: #FE980F" /> Produkt jest widoczny dla kupujcych
+                        </div>
+
+                        <div class="row item_section" style="margin-bottom: 30px">
+                            <button type="submit" class="edit_item_btn btn btn-primary btn-lg">Zapisz zmiany</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+            <form asp-controller="Item" asp-action="Delete" method="post">
+                <input name="id" value="@Model.Id" type="hidden" style="float: left" />
+
+                <div class="row item_section" style="margin-bottom: 30px">
+                    <button type="submit" class="edit_item_btn btn btn-primary btn-lg">Usuń przedmiot</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+

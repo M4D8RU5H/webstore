@@ -1,0 +1,218 @@
+﻿@{
+    ViewBag.Title = "Zamówienie";
+}
+<div class="subsection">
+      Złóż zamówienie
+</div>
+
+
+<section id="cart_items">
+	<div class="container">
+		<div class="breadcrumbs">
+			<ol class="breadcrumb">
+				<li><a href="#">Strona główna</a></li>
+				<li class="active">Płatność</li>
+			</ol>
+		</div><!--/breadcrumbs-->
+
+		<!--<div class="step-one">
+			<h2 class="heading">Krok1</h2>
+		</div>-->
+		<!--<div class="checkout-options">
+			<h3>Nowy użytkownik</h3>
+			<p>Opcje płatności</p>
+			<ul class="nav">
+				<li>
+					<label><input type="checkbox"> Zarejestruj konto</label>
+				</li>
+				<li>
+					<label><input type="checkbox"> Zamówienie w trybie gościa</label>
+				</li>
+				<li>
+					<a href=""><i class="fa fa-times"></i>Anuluj</a>
+				</li>
+			</ul>
+		</div>--><!--/checkout-options-->
+
+		<!--<div class="register-req">
+			<p>Użyj opcji rejestracji i zakupów aby mieć dostęp do historii swoich zakupów lub użyj opcji zakupów dla gościa</p>
+		</div>--><!--/register-req-->
+		
+		<div class="review-payment">
+			<h2>Podsumowanie i płatność</h2>
+		</div>
+
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed">
+				<thead>
+					<tr class="cart_menu">
+						<td class="image">Przedmiot</td>
+						<td class="description"></td>
+						<td class="price">Cena</td>
+						<td class="quantity">Ilość</td>
+						<td class="total">Razem</td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="cart_product">
+							<a href=""><img src="~/images/cart/one.png" alt=""></a>
+						</td>
+						<td class="cart_description">
+							<h4><a href="">Colorblock Scuba</a></h4>
+							<p>ID: 1089772</p>
+						</td>
+						<td class="cart_price">
+							<p>$59</p>
+						</td>
+						<td class="cart_quantity">
+							<div class="cart_quantity_button">
+								<a class="cart_quantity_up" href=""> + </a>
+								<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+								<a class="cart_quantity_down" href=""> - </a>
+							</div>
+						</td>
+						<td class="cart_total">
+							<p class="cart_total_price">$59</p>
+						</td>
+						<td class="cart_delete">
+							<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+						</td>
+					</tr>
+
+					<tr>
+						<td class="cart_product">
+							<a href=""><img src="~/images/cart/two.png" alt=""></a>
+						</td>
+						<td class="cart_description">
+							<h4><a href="">Colorblock Scuba</a></h4>
+							<p>ID: 1089772</p>
+						</td>
+						<td class="cart_price">
+							<p>$59</p>
+						</td>
+						<td class="cart_quantity">
+							<div class="cart_quantity_button">
+								<a class="cart_quantity_up" href=""> + </a>
+								<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+								<a class="cart_quantity_down" href=""> - </a>
+							</div>
+						</td>
+						<td class="cart_total">
+							<p class="cart_total_price">$59</p>
+						</td>
+						<td class="cart_delete">
+							<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td class="cart_product">
+							<a href=""><img src="~/images/cart/three.png" alt=""></a>
+						</td>
+						<td class="cart_description">
+							<h4><a href="">Colorblock Scuba</a></h4>
+							<p>ID: 1089772</p>
+						</td>
+						<td class="cart_price">
+							<p>$59</p>
+						</td>
+						<td class="cart_quantity">
+							<div class="cart_quantity_button">
+								<a class="cart_quantity_up" href=""> + </a>
+								<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+								<a class="cart_quantity_down" href=""> - </a>
+							</div>
+						</td>
+						<td class="cart_total">
+							<p class="cart_total_price">$59</p>
+						</td>
+						<td class="cart_delete">
+							<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">&nbsp;</td>
+						<td colspan="2">
+							<table class="table table-condensed total-result">
+								<tr>
+									<td>Wartość koszyka</td>
+									<td>$59</td>
+								</tr>
+								<tr>
+									<td>Podatek</td>
+									<td>$2</td>
+								</tr>
+								<tr class="shipping-cost">
+									<td>Koszt dostawy</td>
+									<td>Free</td>
+								</tr>
+								<tr>
+									<td>Razem</td>
+									<td><span>$61</span></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="payment-options">
+			<form>
+				<span>
+					<label><input type="radio"> Przelew</label>
+				</span>
+				<span>
+					<label><input type="radio"> Płatność czekiem</label>
+				</span>
+				<span>
+					<label><input type="radio"> Paypal</label>
+				</span>
+			</form>
+		</div>
+
+		<div class="shopper-informations">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="shopper-info">
+						<p>Informacje klienta</p>
+						<form>
+							<input type="text" placeholder="Wyświetlana nazwa">
+							<input type="text" placeholder="Nazwa użytkownika">
+							<input type="password" placeholder="Hasło">
+							<input type="password" placeholder="Potwierdź hasło">
+						</form>
+						<a class="btn btn-primary" href="">Kontynuuj</a>
+					</div>
+				</div>
+				<div class="col-sm-5 clearfix">
+					<div class="bill-to">
+						<p>Adres dostawy</p>
+						<div class="form-one">
+							<form>
+								<input type="text" placeholder="Email *">
+								<input type="text" placeholder="Imię *">
+								<input type="text" placeholder="Nazwisko *">
+								<input type="text" placeholder="Ulica i numer domu/mieszkania *">
+								<input type="text" placeholder="Miasto *">
+							</form>
+						</div>
+						<div class="form-two">
+							<form>
+								<input type="text" placeholder="Kod pocztowy *">
+								<input type="password" placeholder="Potwierdź hasło">
+								<input type="text" placeholder="Numer telefonu *">
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="order-message">
+						<textarea name="message" placeholder="Notatki do zamówień" rows="16"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</section> <!--/#cart_items-->

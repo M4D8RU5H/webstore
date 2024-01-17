@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "Edycja kategorii";
+    
+}
+
+
+
+
+@try{
+    @if (Model.length == 0)
+    {
+        <div class="subsection">
+            Brak kategorii do edycji
+        </div>
+    }
+    else
+    {
+        @foreach (var category in Model)
+        {
+            <div class="subsection">
+                Wybierz kategorię, którą chcesz edytować
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading accout-settings-section" data-toggle="collapse" href="#@category.Id" role="button" aria-expanded="false" aria-controls=@category.Id>
+                            <h4>
+                                @category.Name
+                            </h4>
+                        </div>
+                    </div>
+                    <div id=@category.Id class="collapse multi-collapse">
+                        <div class="panel-heading">
+                            <div class="panel-heading accout-settings-section" href="#@category.Name" role="button" aria-expanded="false" aria-controls="@category.Name">
+                                Edytuj
+                            </div>
+
+                        </div>
+
+                        <div id=@category.Name>
+
+                            <form  class="row" name="category-edit-form" method="post">
+                                <div class="col-md-3 text-center">
+                                    <p style="padding:3px">Nazwa:</p>
+                                </div>
+                                <div class="form-group col-md-9">
+                                    <input type="text" name="name" class="form-control" placeholder=@category.Name>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <p style="padding:3px">Nadkategoria:</p>
+                                </div>
+                                <div class="form-group col-md-9">
+                                    @foreach (var parentCategory in Model)
+                                    {
+                                        if (parentCategory.Name != category.Name && parentCategory != null)
+                                        {
+                                            <label><input type="radio" name="ParentCategoryName" value=@parentCategory.Name> @parentCategory.Name</label><br>
+                                        }
+                                    }
+                                    <label><input type="radio" name="ParentCategoryName" value="None"> Brak kategorii nadrzędnej </label>
+
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <input type="submit" name="submit" class="btn btn-primary pull-right" value="Zapisz zmiany" style="margin-right:30px">
+                                    <input type="reset" class="btn btn-primary pull-left" value="Anuluj" style="margin-left:30px">
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <div class="panel-heading">
+                            <div class="panel-heading accout-settings-section"  href="#@category.Name" role="button" aria-expanded="false" aria-controls="data">
+                                Usuń
+                            </div>
+                        </div>
+                        <div id="@category.Name">
+                            <form  class="row" name="category-delete-form" method="post">
+                                <div class="col-md-3 text-center">
+                                    <p style="padding:3px">Co ma stać się z produktami należącymi do tej kategorii?</p>
+                                </div>
+                                <div class="form-group col-md-9">
+                                    @if (category.ParentCategory != null)
+                                    {
+                                        <label><input type="radio" name="DeleteCategory" value="None"> Przypisz do nadkategorii </label><br>
+                                    }
+                                    <label><input type="radio" name="DeleteCategory" value="None"> Usuń te produkty </label><br>
+
+
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <input type="submit" name="submit" class="btn btn-primary pull-right" value="Usuń kategorię" style="margin-right:30px">
+                                    <input type="reset" name="reset" class="btn btn-primary pull-left" value="Anuluj" style="margin-left:30px">
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+
+
+}catch(Exception e){
+         <div class="subsection">
+        Brak kategorii do edycji
+        </div>
+}
+
+
+
+

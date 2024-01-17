@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "Edycja konta";
+}
+
+@model WebStore.ViewModels.ApplicationUserViewModels.UserAccountManagementViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+
+            
+            <div class="panel-heading accout-settings-section" data-toggle="collapse" href="#data" role="button" aria-expanded="false" aria-controls="data">
+                <h4>
+                    Ares E-Mail
+                </h4>
+            </div>
+            <div id="data" class="collapse multi-collapse">
+                <div class="row accout-settings-form">
+                    <div class="col-sm-6">
+                        <div class="status alert alert-success" style="display: none"></div>
+                            <form asp-action="EditEmail">
+
+                                <div class=form-group>
+                                    <label asp-for="EditEmail.Email" class="control-label"></label>
+                                    <input asp-for="EditEmail.Email" class="form-control"/>
+                                    <span asp-validation-for="EditEmail.Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                                </div>
+
+                            </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-heading accout-settings-section" data-toggle="collapse" href="#password" role="button" aria-expanded="false" aria-controls="password">
+                <h4>
+                    Zmiana hasła
+                </h4>
+            </div>
+            <div id="password" class="collapse multi-collapse">
+                <div class="row accout-settings-form">
+                    <div class="col-sm-6">
+                        <div class="status alert alert-success" style="display: none"></div>
+                            <form asp-action="EditPassword">
+
+                                <div class=form-group>
+                                    <label asp-for="EditPassword.CurrentPassword" class="control-label"></label>
+                                    <input asp-for="EditPassword.CurrentPassword" class="form-control"/>
+                                    <span asp-validation-for="EditPassword.CurrentPassword" class="text-danger"></span>
+                                </div>
+
+                                <div class=form-group>
+                                    <label asp-for="EditPassword.NewPassword" class="control-label"></label>
+                                    <input asp-for="EditPassword.NewPassword" class="form-control"/>
+                                    <span asp-validation-for="EditPassword.NewPassword" class="text-danger"></span>
+                                </div>
+
+                                <div class=form-group>
+                                    <label asp-for="EditPassword.ConfirmNewPassword" class="control-label"></label>
+                                    <input asp-for="EditPassword.ConfirmNewPassword" class="form-control"/>
+                                    <span asp-validation-for="EditPassword.ConfirmNewPassword" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                                </div>
+
+                            </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-heading accout-settings-section" data-toggle="collapse" href="#address" role="button" aria-expanded="false" aria-controls="address">
+                <h4>
+                    Adres do wysyłki
+                </h4>
+            </div>
+            <div id="address" class="collapse multi-collapse">
+                <div class="row accout-settings-form">
+                    <div class="col-sm-6">
+
+                        <form asp-action="EditAddress">
+
+                            <div class=form-group>
+                                <label asp-for="EditShippingAddress.Name" class="control-label"></label>
+                                <input asp-for="EditShippingAddress.Name" class="form-control"/>
+                                <span asp-validation-for="EditShippingAddress.Name" class="text-danger"></span>
+                            </div>
+
+                            <div class=form-group>
+                                <label asp-for="EditShippingAddress.Surname" class="control-label"></label>
+                                <input asp-for="EditShippingAddress.Surname" class="form-control"/>
+                                <span asp-validation-for="EditShippingAddress.Surname" class="text-danger"></span>
+                            </div>
+
+                            <div class=form-group>
+                                <label asp-for="EditShippingAddress.Phone" class="control-label"></label>
+                                <input asp-for="EditShippingAddress.Phone" class="form-control"/>
+                                <span asp-validation-for="EditShippingAddress.Phone" class="text-danger"></span>
+                            </div>
+
+                            <div class=form-group>
+                                <label asp-for="EditShippingAddress.PostalCode" class="control-label"></label>
+                                <input asp-for="EditShippingAddress.PostalCode" class="form-control"/>
+                                <span asp-validation-for="EditShippingAddress.PostalCode" class="text-danger"></span>
+                            </div>
+                        
+                            <div class=form-group>
+                                <label asp-for="EditShippingAddress.City" class="control-label"></label>
+                                <input asp-for="EditShippingAddress.City" class="form-control"/>
+                                <span asp-validation-for="EditShippingAddress.City" class="text-danger"></span>
+                            </div>
+
+                            <div class=form-group>
+                                <label asp-for="EditShippingAddress.Street" class="control-label"></label>
+                                <input asp-for="EditShippingAddress.Street" class="form-control"/>
+                                <span asp-validation-for="EditShippingAddress.Street" class="text-danger"></span>
+                            </div>
+
+                            <div class=form-group>
+                                <label asp-for="EditShippingAddress.BuildingNumber" class="control-label"></label>
+                                <input asp-for="EditShippingAddress.BuildingNumber" class="form-control"/>
+                                <span asp-validation-for="EditShippingAddress.BuildingNumber" class="text-danger"></span>
+                            </div>
+
+                            <div class=form-group>
+                                <label asp-for="EditShippingAddress.ApartmentNumber" class="control-label"></label>
+                                <input asp-for="EditShippingAddress.ApartmentNumber" class="form-control"/>
+                                <span asp-validation-for="EditShippingAddress.ApartmentNumber" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                            </div>
+
+                        </form>
+
+                </div>
+            </div>
+        </div>
+
+@*        <div class="row accout-settings-form">
+            <div class="col-sm-6">
+                <form method="post" asp-action="DeleteUser">
+                    <button type="submit" class="btn btn-danger">Usuń konto</button>
+                </form>
+            </div>
+        </div>*@
+
+    </div>
+</div>

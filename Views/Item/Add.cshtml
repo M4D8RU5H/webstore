@@ -1,0 +1,84 @@
+﻿@model WebStore.Models.Item
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <form asp-controller="Item" asp-action="Add" method="post" enctype="multipart/form-data">
+
+                <div class="row item_section">
+                    <h4><label asp-for="ImageFiles"></label>*</h4>
+                    <div id="images" class="col-md-12">
+
+                        <div class="row">
+                            <div id="images_preview">
+                                <div id="set_main_img">USTAW ZDJĘCIE JAKO GŁÓWNE</div>
+                                <div id="add_first_img">
+                                    <label for="add_first_img_btn">WYBIERZ ZDJĘCIE Z DYSKU</label>
+                                    <input id="add_first_img_btn" asp-for="ImageFiles" accept="image/png, image/jpeg" class="upload_img">
+                                </div>                                
+                            </div>
+                            <span asp-validation-for="ImageFiles" class="text-danger"></span>
+                        </div>
+
+                        <div id="img_panel" class="row"></div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row item_section">
+                            <h4><label asp-for="Name"></label>*</h4>
+                            <input asp-for="Name" autocomplete="off" placeholder="Podaj nazwę przedmiotu" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="row item_section">
+                            <h4><label asp-for="Description"></label></h4>
+                            <textarea asp-for="Description" autocomplete="off" placeholder="Napisz o przedmiocie coś więcej" rows="6" style="resize: vertical" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="row item_section">
+                            <h4><label asp-for="Category"></label>*</h4>
+                            <button type="button" id="show_categories_btn" class="btn btn-outline-primary">Przeglądaj wszystkie kategorie...</button>                            
+
+                            <div id="category_browser">                                
+                                <ul id="category_list">                                    
+                                </ul>
+                            </div>
+
+                            <input asp-for="Category" value="" type="hidden"/>
+                            <span asp-validation-for="Category" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="row item_section">
+                            <div style="width: 49%; float: left; margin-right: 2%">
+                                <h4><label asp-for="Price"></label>*</h4>
+                                <input asp-for="Price" autocomplete="off" placeholder="0,00" value="" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                            <div style="width: 49%; float: left;">
+                                <h4><label asp-for="StockQuantity"></label>*</h4>
+                                <input asp-for="StockQuantity" autocomplete="off" placeholder="0" value="" class="form-control" />
+                                <span asp-validation-for="StockQuantity" class="text-danger"></span>
+                            </div>
+                            <div style="clear: both"></div>
+                        </div>
+
+                        <div class="row item_section">
+                            <h4><label asp-for="IsVisible"></label></h4>
+                            <input asp-for="IsVisible" style="margin-right: 10px; margin: 0, accent-color: #FE980F" checked="checked" /> Produkt jest widoczny dla kupujcych
+                        </div>
+
+                        <div class="row item_section" style="margin-bottom: 30px">
+                            <button type="submit" class="edit_item_btn btn btn-primary btn-lg">Dodaj przedmiot</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

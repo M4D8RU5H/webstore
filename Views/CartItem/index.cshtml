@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Koszyk";
+}
+@model WebStore.ViewModels.CartItemViewModels.CartViewModel
+
+<section id="cart_items">
+	<div class="container">
+		<div class="breadcrumbs">
+			<ol class="breadcrumb">
+				<li><a href="#">Strona główna</a></li>
+				<li class="active">Koszyk</li>
+			</ol>
+		</div>
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed">
+				<thead>
+					<tr class="cart_menu">
+						<td class="image">Przedmiot</td>
+						<td class="description"></td>
+						<td class="price">Cena</td>
+						<td class="quantity">Ilość</td>
+						<td class="total">Razem</td>
+						<td></td>
+					</tr>
+				</thead>
+
+				<tbody>
+					@{int i = 1;}
+					@foreach (var cartItem in Model.CartItems)
+					{
+						<tr>
+							<td class="cart_product">
+								<a href=""><img src="@cartItem.ItemImageURL" alt=""></a>
+							</td>
+
+							<td class="cart_description">
+								<h4><a href="">@cartItem.ItemName</a></h4>
+							</td>
+
+							<td class="cart_price">
+								<p>@cartItem.ItemPrice</p>
+							</td>
+
+							<td class="cart_quantity">
+								<div class="cart_quantity_button">
+									<input id="cart_quantity_input_@i" class="cart_quantity_input" type="text" name="quantity" value="@cartItem.Quantity" autocomplete="off" size="2">
+								</div>
+							</td>
+
+							<td class="cart_total">
+								<p class="cart_total_price">@cartItem.ItemPrice</p>
+							</td>
+
+							<td class="cart_delete">
+								<a id="cart_item_delete_@i++" class="cart_item_delete" href=""><i class="fa fa-times"></i></a>
+							</td>
+						</tr>
+					}
+
+					<tr>
+						<td colspan="4">
+							<div style="width: 90%; margin: auto">
+								<div style="float: left; width: 49%">
+									Dostawa
+									<select class="form-select form-select-sm">
+										<option selected>Dostawa</option>
+										<option value="1">One</option>
+										<option value="2">Two</option>
+										<option value="3">Three</option>
+									</select>
+								</div>
+
+								<div style="float: left; width: 49%; margin-left: 2%">
+									Płatność
+									<select class="form-select form-select-sm">
+										<option selected>Płatność</option>
+										<option value="1">One</option>
+										<option value="2">Two</option>
+										<option value="3">Three</option>
+									</select>
+								</div>
+							</div>
+						</td>
+
+						<td colspan="2">
+							<table class="table table-condensed total-result">
+								<tr>
+									<td>Wartość koszyka:</td>
+									<td>@Model.CartValue</td>
+								</tr>
+								<tr class="shipping-cost">
+									<td>Koszt dostawy:</td>
+									<td>Free</td>
+								</tr>
+								<tr>
+									<td><b>Razem:</b></td>
+									<td><span>@Model.CartValue</span></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+
+		<div>Dane kupujacego (statyczne)</div>
+		<div>Przycisk zmień dane</div>
+
+		<a class="btn btn-default check_out pull-right" href="">Kupuję i płacę</a>
+	</div>
+</section> <!--/#cart_items-->
+

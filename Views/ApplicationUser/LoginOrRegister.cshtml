@@ -1,0 +1,70 @@
+﻿@model WebStore.ViewModels.ApplicationUserViewModels.UserLoginOrRegisterViewModel
+
+<div id="login_register" class="container">
+	<div class="row">
+
+		<div class="col-sm-4 col-sm-offset-1">
+			<div class="login-form">				
+				<h2>Zaloguj się na swoje konto...</h2>				
+				<form asp-controller="ApplicationUser" asp-action="Login" method="post">				
+					<div class="form-group">
+						<label asp-for="Login.Email"></label>*
+						<input asp-for="Login.Email" class="form-control" />
+						<span asp-validation-for="Login.Email" class="text-danger"></span>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="Login.Password"></label>*
+						<input asp-for="Login.Password" class="form-control" />
+						<span asp-validation-for="Login.Password" class="text-danger"></span>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="Login.RememberMe"></label>
+						<input asp-for="Login.RememberMe" style="accent-color: #FE980F" checked="checked" />
+					</div>	
+					
+					<span class="text-danger">@ViewData["LoginFailMsg"]</span>
+
+					<button type="submit" class="btn btn-default">Logowanie</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="col-sm-1">
+			<h2 class="or">LUB</h2>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="signup-form">
+				<h2>...Zarejestruj się!</h2>
+				<form asp-controller="ApplicationUser" asp-action="Register" method="post">		
+					<div class="form-group">
+						<label asp-for="Register.Email"></label>*
+						<input asp-for="Register.Email" class="form-control" />
+						<span asp-validation-for="Register.Email" class="text-danger"></span>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="Register.Password"></label>*
+						<input asp-for="Register.Password" class="form-control" />
+						<span asp-validation-for="Register.Password" class="text-danger"></span>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="Register.ConfirmPassword"></label>*
+						<input asp-for="Register.ConfirmPassword" class="form-control" />
+						<span asp-validation-for="Register.ConfirmPassword" class="text-danger"></span>
+					</div>
+
+					<div class="form-group">
+						<span class="text-danger">@ViewData["RegisterFailMsg"]</span>
+					</div>
+
+					<button type="submit" class="btn btn-default">Rejestracja</button>
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>
